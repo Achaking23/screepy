@@ -1,0 +1,117 @@
+# ============================================================================
+# Screepy TicketBot — Global Configuration
+# ============================================================================
+
+app:
+  name: "Screepy TicketBot"
+  version: "1.0.0"
+  debug: false
+  log_level: INFO
+  max_retries: 3
+  request_timeout: 30
+
+platforms:
+  ticketmaster:
+    enabled: true
+    base_url: "https://api.ticketmaster.com"
+    api_key: ""
+    rate_limit: 10
+    queue_delay: 0.5
+  axs:
+    enabled: true
+    base_url: "https://api.axs.com"
+    rate_limit: 8
+    queue_delay: 0.8
+  seatgeek:
+    enabled: true
+    base_url: "https://api.seatgeek.com"
+    client_id: ""
+    rate_limit: 12
+    queue_delay: 0.3
+  stubhub:
+    enabled: true
+    base_url: "https://api.stubhub.com"
+    rate_limit: 10
+    queue_delay: 0.5
+  vividseats:
+    enabled: true
+    base_url: "https://api.vividseats.com"
+    rate_limit: 8
+    queue_delay: 0.6
+
+browser:
+  driver: "undetected_chromedriver"
+  headless: false
+  window_width: 1280
+  window_height: 720
+  user_agent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 ..."
+  implicit_wait: 10
+  page_load_timeout: 30
+
+proxy:
+  enabled: false
+  rotating: true
+  protocol: "socks5"
+  provider: ""
+  source_file: "proxies/list.txt"
+  check_url: "https://api.ipify.org"
+  max_latency_ms: 3000
+  ban_threshold: 5
+
+accounts:
+  email_domain: "tempmail.com"
+  use_disposable: true
+  password_length: 16
+  password_include_symbols: true
+  max_accounts_per_event: 50
+  cooldown_hours: 24
+
+monitoring:
+  check_interval: 60
+  presale_only: false
+  price_threshold: 0
+  max_tickets_per_order: 4
+  notify_on_seat_change: true
+  sound_alert: false
+
+payment:
+  retry_on_failure: true
+  max_payment_attempts: 3
+  card_bin: ""
+  use_virtual_cards: false
+  billing_same_as_shipping: true
+
+notifications:
+  desktop: true
+  sound: false
+  telegram:
+    enabled: false
+    bot_token: ""
+    chat_id: ""
+  discord:
+    enabled: false
+    webhook_url: ""
+  email:
+    enabled: false
+    smtp_server: ""
+    smtp_port: 587
+    username: ""
+    password: ""
+    from_addr: ""
+    to_addr: ""
+
+export:
+  default_format: "xlsx"
+  include_raw_html: false
+  auto_export_on_purchase: true
+  output_dir: "exports"
+
+anti_detection:
+  randomize_headers: true
+  randomize_delays: true
+  delay_min: 0.5
+  delay_max: 2.0
+  human_typing: true
+  mouse_movements: true
+  clear_cookies_on_new_session: true
+  rotate_user_agent: true
